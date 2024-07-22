@@ -1,4 +1,5 @@
- int findDuplicate(vector<int>& nums) {
+// 1st Logic
+int findDuplicate(vector<int>& nums) {
 
     // Phase 1: Finding the intersection point of the two runners.
     int tortoise = nums[0];
@@ -17,5 +18,29 @@
     }
     
     return hare;
+        
+    }
+
+//2nd Logic
+
+int findDuplicate(vector<int>& nums) {
+
+        int size = *max_element(nums.begin(),nums.end());
+
+        vector<int>v(size+1,0);
+
+        for(int i=0;i<nums.size();i++){
+            v[nums[i]]++;
+        }
+
+        int ans = -1;
+
+        for(int i=0;i<v.size();i++){
+            if(v[nums[i]] >= 2){
+                ans = nums[i];
+                break;
+            }
+        }
+        return ans;
         
     }
