@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        
+        multimap<int,int>mp;
+
+        for(int i=0;i<nums.size();i++){
+            mp.insert(pair<int,int>(nums[i],i));
+        }
+
+        int size = nums.size();
+
+        vector<int>ans;
+
+        multimap<int,int>::iterator itr;
+        for(itr = mp.begin();itr!=mp.end();itr++){
+            ans.push_back(itr->first);
+        }
+
+        return ans[size-k];
+       
+    }
+};
