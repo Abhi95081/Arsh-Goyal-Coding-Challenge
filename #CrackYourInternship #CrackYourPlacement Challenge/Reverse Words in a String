@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+
+    stack<string> st;
+    string word = "";
+
+    // Push words into the stack
+    for (char c : s) {
+        if (c == ' ') {
+            if (!word.empty()) {
+                st.push(word);
+                word = "";
+            }
+        } else {
+            word += c;
+        }
+    }
+    // Push the last word if it exists
+    if (!word.empty()) {
+        st.push(word);
+    }
+
+    std::string reversed = "";
+    while (!st.empty()) {
+        reversed += st.top();
+        st.pop();
+        if (!st.empty()) {
+            reversed += " ";
+        }
+    }
+
+    return reversed;
+    }
+};
